@@ -1,0 +1,7 @@
+{
+  "name": "Tesis",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
