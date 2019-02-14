@@ -1,0 +1,61 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Niños</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list *ngFor="let item of items | async">
+      <ion-item >
+        <ion-card >
+          <ion-row>
+            <ion-col col-9>
+              <ion-card-content (click)="monitoreo(item.key)" class="popover-page">
+                <ion-item class="text-to-change">
+                  <ion-avatar item-start>
+                    <div *ngIf="item.Genero=='M'">
+                       <img src="../assets/imgs/boy.jpg">
+                    </div>
+                    <div *ngIf="item.Genero=='F'">
+                      <img src="../assets/imgs/girl.jpg">
+                    </div>
+                  </ion-avatar>
+                   <div text-wrap><h2>{{item.Nombres}}  {{item.Apellidos}}</h2></div>
+                   <div text-wrap>
+                     <p>Nacido: {{item.FechaNac}}</p>
+                     <p > {{verEdad(item.FechaNac)}} </p>
+                   </div>
+                </ion-item>
+              </ion-card-content>
+            </ion-col>
+            <ion-col col-3>
+              <ion-row>
+                <ion-col>
+                  <button ion-button icon-start clear small (click)="updInfante(item.key)">
+                    <ion-icon name="md-create"></ion-icon>
+                  </button>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col >
+                  <button ion-button icon-start clear small (click)="delInfante(item.key)">
+                    <ion-icon name="ios-trash"></ion-icon>
+                  </button>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+        </ion-item>
+  </ion-list>
+
+  <ion-fab right edge middle>
+  <button ion-fab color="blue" (click)="openModal()">
+    <ion-icon name='md-add'></ion-icon>
+  </button>
+
+</ion-fab>
+</ion-content>

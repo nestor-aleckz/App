@@ -1,0 +1,40 @@
+<ion-content class="login-content" padding>
+  <ion-row class="logo-row">
+    <ion-col></ion-col>
+    <ion-col width-80>
+      <img src="https://i.pinimg.com/236x/a3/5e/e2/a35ee2edc0e99d094858e8fec5d904eb--baby-freebies-gerber-baby.jpg"/>
+    </ion-col>
+    <ion-col></ion-col>
+
+  </ion-row>
+
+
+  <ion-row>
+    <ion-col>
+      <ion-list inset>
+
+        <ion-item>
+          <ion-label><ion-icon name="md-person"></ion-icon></ion-label>
+          <ion-input type="text" placeholder="Nombre"  name="displayName" [(ngModel)]="newuser.displayName"></ion-input>
+        </ion-item>
+        <p></p>
+        <ion-item>
+          <ion-label><ion-icon name="md-mail"></ion-icon></ion-label>
+          <ion-input type="text" placeholder="Correo"  name="email" [(ngModel)]="newuser.email"></ion-input>
+        </ion-item>
+        <p></p>
+        <ion-item>
+          <ion-label><ion-icon name="md-lock"></ion-icon></ion-label>
+          <ion-input type="password" placeholder="Contraseña" name="password" [(ngModel)]="newuser.password"></ion-input>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col class="signup-col">
+      <button ion-button class="submit-btn" full (click)="registrar()">Registrar</button>
+      <button ion-button class="register-btn" block clear (click)="goBack()">Regresar</button>
+    </ion-col>
+  </ion-row>
+</ion-content>

@@ -1,0 +1,62 @@
+<ion-content padding>
+  <ion-row>
+    <ion-col>
+      <ion-row>
+        <ion-row>
+            <ion-label stacked><ion-icon name="md-calendar"></ion-icon> Fecha </ion-label>
+        </ion-row>
+        <ion-row>
+            <ion-item>
+              <ion-datetime  placeholder="Fecha" [(ngModel)]="nwMedida.fecha"></ion-datetime>
+            </ion-item>
+        </ion-row>
+      </ion-row>
+
+        <ion-row>
+          <ion-row>
+              <ion-label stacked><ion-icon name="md-body"></ion-icon> Peso  </ion-label>
+          </ion-row>
+          <ion-row>
+            <ion-col col-9>
+              <ion-item>
+                <ion-input type="number" placeholder="Libra"  name="libra" [(ngModel)]="nwMedida.lb"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col col-3>
+              <ion-item class="padding-left-2px">
+                <ion-input type="number" placeholder="Onz"  name="onza" [(ngModel)]="nwMedida.onz"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-row>
+
+        <ion-row>
+          <ion-row>
+            <ion-label stacked><ion-icon name="md-body"></ion-icon> Talla </ion-label>
+          </ion-row>
+          <ion-row>
+            <ion-item>
+              <ion-input type="text" placeholder="Centimetros"  name="talla" [(ngModel)]="nwMedida.talla"></ion-input>
+            </ion-item>
+          </ion-row>
+        </ion-row>
+
+        <ion-row>
+          <ion-row>
+            <ion-label stacked><ion-icon name="create"></ion-icon> Nota </ion-label>
+          </ion-row>
+          <ion-row>
+            <ion-item>
+              <ion-input type="text" placeholder="Descripcion"  name="nota" [(ngModel)]="nwMedida.nota" ></ion-input>
+            </ion-item>
+          </ion-row>
+        </ion-row>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col class="signup-col">
+      <button ion-button class="submit-btn" (click)="updMedida(nwMedida)" full >Guardar</button>
+    </ion-col>
+  </ion-row>
+</ion-content>

@@ -1,0 +1,58 @@
+page-login {
+  .login-content {
+      background: rgb(55,52,71);
+      font-family: 'calibri';
+
+      .logo-row {
+        padding-top: 30px;
+        padding-bottom: 10px;
+      }
+
+      .login-box {
+        background:rgb(55,52,71);
+        padding: 20px 20px 0px 20px;
+        margin-top: 30px;
+      }
+
+      ion-row {
+        align-items: center;
+        text-align: center;
+      }
+
+      .signup-col {
+        margin: 0px 16px 0px 16px;
+        padding-bottom: 20px;
+      }
+
+      .item  {
+        margin-bottom: 10px;
+        background: rgba(55, 52, 71, 0.5);
+        border:  none;
+
+        .text-input, {
+          color: #fff;
+
+        }
+      }
+
+      .icon {
+        color:rgb(177, 177, 177);
+        padding-right: 10px;
+      }
+
+
+      .submit-btn {
+        background: rgb(49, 46, 63);
+      }
+
+      .register-btn {
+        color: #ffffff;
+        font-size: 0.8em;
+      }
+      .forgot-btn {
+        color: #ffffff;
+        font-size: 0.7em;
+      }
+    }
+
+}

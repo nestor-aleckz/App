@@ -1,0 +1,51 @@
+
+<ion-content padding>
+  <ion-row>
+    <ion-col>
+      <ion-row>
+        <ion-row>
+            <ion-label stacked><ion-icon name="md-calendar"></ion-icon> Fecha </ion-label>
+        </ion-row>
+        <ion-row>
+            <ion-item>
+              <h2> {{evento.fecha}}</h2>
+            </ion-item>
+        </ion-row>
+      </ion-row>
+
+        <ion-row>
+          <ion-row>
+              <ion-label stacked><ion-icon name="md-body"></ion-icon> Nombre Evento  </ion-label>
+          </ion-row>
+          <ion-row>
+            <ion-col col-12>
+              <ion-item>
+                <ion-input type="text" placeholder="Evento"  name="evento" [(ngModel)]="evento.evento"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-row>
+        <ion-row>
+          <ion-row>
+            <ion-label stacked><ion-icon name="create"></ion-icon> Nota </ion-label>
+          </ion-row>
+          <ion-row>
+            <ion-item>
+              <ion-input type="text" placeholder="Descripcion"  name="nota" [(ngModel)]="evento.descripcion" ></ion-input>
+            </ion-item>
+          </ion-row>
+        </ion-row>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col class="signup-col">
+      <button ion-button class="submit-btn" (click)="guardarEvento(evento)" full >Guardar</button>
+    </ion-col>
+  </ion-row>
+  <div *ngIf="isevent==true">
+    <ion-col class="signup-col">
+      <button ion-button class="submit-btn" (click)="eliminarEvento(evento)" full >Eliminar</button>
+    </ion-col>
+  </div>
+</ion-content>

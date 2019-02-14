@@ -1,0 +1,38 @@
+
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Vacunas de {{infante.nombre}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content  padding class="popover-page">
+
+
+    <ion-list  class="text-to-change"*ngFor="let vacuna of vacunas">
+          <ion-row>
+            <ion-col col-2>
+              <div (click)="showVacuna(vacuna)">
+                <div *ngIf="vacuna.vacunado==true">
+                   <img src="../assets/imgs/check.png">
+                </div>
+                <div *ngIf="vacuna.vacunado==false">
+                   <img src="../assets/imgs/nochek.svg">
+                </div>
+              </div>
+            </ion-col>
+            <ion-col col-1>
+            </ion-col>
+            <ion-col col-9>
+              <h4>{{vacuna.nombre}}</h4>
+              <div>
+                <p>{{vacuna.descripcion}}</p>
+              </div>
+            </ion-col>
+          </ion-row>
+
+    </ion-list>
+
+</ion-content>

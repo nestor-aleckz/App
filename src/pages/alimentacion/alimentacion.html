@@ -1,0 +1,45 @@
+<!--
+  Generated template for the AlimentacionPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+<ion-content padding class="main-view">
+  <div class="overlay" (click)="dismiss()"></div>
+   <div class="modal_content">
+     <div *ngIf="VacInfante.vacunado==true">
+       <ion-row>
+          <ion-col col-8>
+            <h3> A {{infante.nombre}} ya se le aplicó la vacuna {{vacuna}} </h3>
+            <p>
+                Lo realizó el {{VacInfante.fechaVacuna}}
+            </p>
+          </ion-col>
+          <ion-col col-3>
+            <button ion-button icon-start clear small (click)="delete()">
+              <ion-icon name="ios-trash"></ion-icon>
+              <div>Borrar</div>
+            </button>
+          </ion-col>
+          <ion-col col-1>
+          </ion-col>
+       </ion-row>
+
+     </div>
+     <div *ngIf="VacInfante.vacunado==false">
+       <h2> ¿Cuando Vacuno a {{infante.nombre}} ?</h2>
+       <ion-row>
+           <ion-item>
+             <ion-datetime  placeholder="Fecha" [(ngModel)]="VacInfante.fechaVacuna"></ion-datetime>
+           </ion-item>
+       </ion-row>
+         <ion-row>
+           <ion-col class="signup-col">
+             <button ion-button class="submit-btn" (click)="guardarVacuna()"full >Guardar</button>
+           </ion-col>
+         </ion-row>
+     </div>
+   </div>
+</ion-content>

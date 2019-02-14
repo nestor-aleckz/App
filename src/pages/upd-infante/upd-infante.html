@@ -1,0 +1,38 @@
+<ion-content padding>
+  <ion-row>
+    <ion-col>
+      <ion-list inset>
+        <ion-item class="item-inner item-md">
+          <ion-label><ion-icon name="md-person"></ion-icon></ion-label>
+          <ion-input type="text" name="name" [(ngModel)]="Infante.Nombres"></ion-input>
+        </ion-item>
+        <p></p>
+        <ion-item class="item-inner item-md">
+          <ion-label><ion-icon name="md-person"></ion-icon></ion-label>
+          <ion-input type="text" name="apellidos" [(ngModel)]="Infante.Apellidos" ></ion-input>
+        </ion-item>
+        <p></p>
+        <ion-item class="item-inner item-md">
+            <ion-label><ion-icon name="md-person"></ion-icon></ion-label>
+            <ion-select  [(ngModel)]="Infante.Genero">
+              <ion-option value="F">Femenino</ion-option>
+              <ion-option value="M">Masculino</ion-option>
+            </ion-select>
+        </ion-item>
+        <p></p>
+        <ion-item class="item-inner item-md">
+          <ion-label><ion-icon name="md-calendar"></ion-icon></ion-label>
+          <ion-datetime  [(ngModel)]="Infante.FechaNac"></ion-datetime>
+        </ion-item>
+        <p></p>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col class="signup-col">
+      <button ion-button class="submit-btn" (click)="Guardar(itemKey,Infante)" full >Guardar</button>
+    </ion-col>
+  </ion-row>
+
+</ion-content>

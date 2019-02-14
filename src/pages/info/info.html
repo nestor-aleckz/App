@@ -1,0 +1,162 @@
+<!--
+  Generated template for the InfoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar no-border-bottom color="primary">
+    <ion-row>
+      <ion-col col-6>
+        <ion-title>
+          Informacion
+        </ion-title>
+      </ion-col>
+      <ion-col col-6>
+        <ion-item>
+          <ion-select  class ="seleccion"  placeholder='Seleccione Niño'  #C (ionChange)="slctNino(C.value)">
+            <ion-option *ngFor="let item of infantes" [value]=item>
+              {{item.Nombres}}
+            </ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-navbar>
+  <ion-toolbar no-border-top>
+      <ion-segment [(ngModel)]="Informacion">
+        <ion-segment-button text-wrap value="Vacunas">
+          Vacunas
+        </ion-segment-button>
+        <ion-segment-button text-wrap value="Alimentacion">
+          Alimentacion
+        </ion-segment-button>
+        <ion-segment-button text-wrap value="Desarrollo">
+          Desarrollo
+        </ion-segment-button>
+        <ion-segment-button text-wrap value="Estimulacion">
+          Estimulacion
+        </ion-segment-button>
+      </ion-segment>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <div [ngSwitch]="Informacion">
+    <ion-list  class="card-background-page" *ngSwitchCase="'Vacunas'">
+      <ion-range  min="1" max="8" step="1" color="secondary" [(ngModel)]="edadVacuna">
+      </ion-range>
+      <ion-list *ngFor="let itmFV of fechasV ">
+        <ion-card [hidden]="verInfo(itmFV.idFecha,1)">
+            <ion-card-content (click)="verVacuna(itmFV.idFecha)">
+                <ion-grid>
+                  <ion-row>
+                    <ion-col col-4>
+                      <ion-row class="logo-row">
+                        <ion-col width-100>
+                        <img  src={{itmFV.strimg}}/>
+                        </ion-col>
+                      </ion-row>
+                    </ion-col>
+                    <ion-col col-8>
+                      <div class="card-title" > {{itmFV.titulo}} </div>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+            </ion-card-content>
+        </ion-card>
+      </ion-list>
+    </ion-list>
+
+    <ion-list class="popover-page" *ngSwitchCase="'Alimentacion'">
+      <ion-range  min="0" max="3" step="1" color="secondary" [(ngModel)]="edadAlimento">
+      </ion-range>
+      <ion-list *ngFor="let almt of edadAlimts">
+        <ion-card  [hidden]="verInfo(almt.key,2)">
+          <ion-row class="logo-row">
+            <ion-col width-80>
+              <img src= {{almt.strimg}} />
+            </ion-col>
+          </ion-row>
+              <ion-card-content>
+                 <ion-card-title>
+                   {{almt.edad}}
+                 </ion-card-title>
+                 <p text-wrap>
+                    {{almt.descripcion}}
+                </p>
+             </ion-card-content>
+             <ion-row no-padding>
+               <div text-wrap>
+                    {{almt.procedimiento}}
+               </div>
+            </ion-row>
+          </ion-card>
+      </ion-list>
+    </ion-list>
+
+    <ion-list  *ngSwitchCase="'Desarrollo'">
+      <ion-range  min="0" max="5" step="1" color="secondary" [(ngModel)]="etapaC">
+      </ion-range>
+      <ion-list *ngFor="let etapaD of lstDesarrollo">
+        <ion-card class="text-to-change" [hidden]="verInfo(etapaD.key,3)" >
+            <ion-row class="logo-row">
+              <ion-col width-80>
+                <img src={{etapaD.strimg}} />
+              </ion-col>
+            </ion-row>
+              <ion-card-content>
+                 <ion-card-title>
+                   {{etapaD.edad}}
+                 </ion-card-title>
+                 <ion-row no-padding>
+                   <ion-list>
+                     <ul *ngFor="let desDesa of etapaD.lstDescripcion">
+                        <li text-wrap>
+                          <p>
+                                {{desDesa}}
+                            </p>
+                        </li>
+                    </ul>
+                   </ion-list>
+                </ion-row>
+             </ion-card-content>
+         </ion-card>
+      </ion-list>
+    </ion-list>
+
+    <ion-list  *ngSwitchCase="'Estimulacion'">
+      <ion-range  min="0" max="5" step="1" color="secondary" [(ngModel)]="etapaS">
+      </ion-range>
+      <ion-list *ngFor="let etapaE of lstEstimulo">
+        <ion-card class="text-to-change" [hidden]="verInfo(etapaE.key,4)">
+            <ion-row class="logo-row">
+              <ion-col width-80>
+                <img src={{etapaE.strimg}} />
+              </ion-col>
+            </ion-row>
+            <ion-card-content>
+               <ion-card-title>
+                 {{etapaE.edad}}
+               </ion-card-title>
+               <ion-row no-padding>
+                 <ion-list>
+
+                   <ul *ngFor="let desEst of etapaE.lstDescripcion">
+                      <li text-wrap>
+                          <p>
+                              {{desEst}}
+                          </p>
+                      </li>
+                  </ul>
+                 </ion-list>
+              </ion-row>
+           </ion-card-content>
+          </ion-card>
+      </ion-list>
+    </ion-list>
+  </div>
+
+</ion-content>

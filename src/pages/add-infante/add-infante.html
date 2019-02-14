@@ -1,0 +1,38 @@
+<ion-content padding>
+  <ion-row>
+    <ion-col>
+      <ion-list inset>
+
+        <ion-item class="item-inner item-md">
+          <ion-label><ion-icon name="md-person"></ion-icon></ion-label>
+          <ion-input type="text" placeholder="Nombres"  name="name" [(ngModel)]="nwInfate.Nombres"></ion-input>
+        </ion-item>
+        <p></p>
+        <ion-item class="item-inner item-md">
+          <ion-label><ion-icon name="md-person"></ion-icon></ion-label>
+          <ion-input type="text" placeholder="Apellidos"  name="apellidos" [(ngModel)]="nwInfate.Apellidos" ></ion-input>
+        </ion-item>
+        <p></p>
+        <ion-item class="item-inner item-md">
+            <ion-label><ion-icon name="md-person"></ion-icon></ion-label>
+            <ion-select placeholder="Genero" [(ngModel)]="nwInfate.Genero">
+              <ion-option value="F">Femenino</ion-option>
+              <ion-option value="M">Masculino</ion-option>
+            </ion-select>
+        </ion-item>
+        <p></p>
+        <ion-item class="item-inner item-md">
+          <ion-label><ion-icon name="md-calendar"></ion-icon></ion-label>
+          <ion-datetime placeholder="Fecha Nacimiento" [(ngModel)]="nwInfate.FechaNac"></ion-datetime>
+        </ion-item>
+        <p></p>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col class="signup-col">
+      <button ion-button class="submit-btn" (click)="createNwInfante(nwInfate)" full >Agregar</button>
+    </ion-col>
+  </ion-row>
+</ion-content>
