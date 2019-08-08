@@ -1,0 +1,122 @@
+
+/*
+To customize the look and feel of Ionic, you can override the variables
+in ionic's _variables.scss file.
+
+For example, you might change some of the default colors:
+*/
+$light: #fff !default;
+$stable: #f8f8f8 !default;
+$positive: #4a87ee !default;
+$calm: #43cee6 !default;
+$balanced: #66cc33 !default;
+$energized: #f0b840 !default;
+$assertive: #ef4e3a !default;
+$royal: #8a6de9 !default;
+$dark: #444 !default; // The path for our ionicons font files, relative to the built & temporary main.css
+// The path for our ionicons font files, relative to the built CSS in www/css
+$ionicons-font-path: "../lib/ionic/fonts" !default;
+
+// Include all of Ionic
+//@import "www/lib/ionic/scss/ionic";
+@import "walk";
+@import "auth";
+@import "theme";
+@import "custom";
+
+/* Hide elements*/
+.hide {
+  display: none;
+}
+
+/* Just to center */
+.center {
+  margin: 100px auto;
+  width: 100%;
+}
+
+/*
+  round image- to change the size  of image you can use
+  <img src="path/to/image" class="avatar" width="YOUR_WIDTH">
+*/
+.avatar {
+  border-radius: 100%;
+}
+/* remove background */
+.removebg{
+  background: transparent;
+}
+
+/* remove side borders in items */
+.no-side-borders {
+  border-left: transparent;
+  border-right: transparent;
+}
+/* remove padding */
+.no-padding{
+  padding:0;
+}
+/* fite to screen. it works in many elements */
+.fit-to-screen {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+/* default margin is 10px */
+.margin {
+  margin: 10px;
+}
+
+/* card elements */
+.desh-atom-card {
+  border: 1px solid #ccc;
+}
+.desh-atom-card-2 {
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;
+}
+.desh-atom-card-4 {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)!important;
+}
+.desh-atom-card-8 {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)!important;
+}
+.desh-atom-card-12 {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19)!important;
+}
+.desh-atom-card-16 {
+  box-shadow: 0 16px 24px 0 rgba(0,0,0,0.22),0 25px 55px 0 rgba(0,0,0,0.21)!important;
+}
+.desh-atom-card-24 {
+  box-shadow: 0 24px 24px 0 rgba(0,0,0,0.2),0 40px 77px 0 rgba(0,0,0,0.22)!important;
+}
+.loading-container .loading{
+  background: transparent;
+}
+
+/* loading view - you can find example from - app/main/template/facebook.html */
+.loading-view{
+  background: transparent;
+    .spinner svg {
+    width: 128px;
+    height: 128px;
+  }
+}
+
+.absolute{
+  position: absolute;
+}
+
+/* light gray background */
+.light-gray-bg{
+  background: #f7f8fa;
+}
+.desh-atom-thumb {
+  border:0;
+  &.small {
+    width:50px !important;
+    height:50px !important;
+  }
+  &.large {
+    width:80px !important;
+    height:80px !important;
+  }
+}

@@ -11,7 +11,7 @@
     "lint": "ionic-app-scripts lint"
   },
   "dependencies": {
-    "@angular/animations": "5.2.11",
+    "@angular/animations": "^5.2.11",
     "@angular/common": "5.2.11",
     "@angular/compiler": "5.2.11",
     "@angular/compiler-cli": "5.2.11",
@@ -26,7 +26,7 @@
     "@ionic-native/splash-screen": "~4.15.0",
     "@ionic-native/status-bar": "~4.15.0",
     "@ionic/storage": "2.2.0",
-    "chart.js": "^2.7.3",
+    "chart.js": "^2.8.0",
     "cordova-android": "7.0.0",
     "cordova-browser": "5.0.4",
     "cordova-plugin-datepicker": "^0.9.3",
@@ -46,6 +46,7 @@
     "npm": "^6.4.1",
     "rxjs": "^6.3.3",
     "rxjs-compat": "^6.3.3",
+    "save": "^2.4.0",
     "sw-toolbox": "3.6.0",
     "to": "^0.2.9",
     "update": "^0.7.4",
@@ -63,7 +64,9 @@
       "cordova-plugin-statusbar": {},
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
-      "cordova-plugin-ionic-webview": {},
+      "cordova-plugin-ionic-webview": {
+        "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
+      },
       "cordova-plugin-ionic-keyboard": {}
     },
     "platforms": [

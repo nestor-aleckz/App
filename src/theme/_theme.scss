@@ -1,0 +1,360 @@
+$desh: #064da7 !default;
+$desh-dark: darken($desh, 10%);
+$desh-darker: darken($desh, 15%);
+$desh-light: lighten($desh, 25%);
+$desh-lighter: lighten($desh, 40%);
+ion-side-menu {
+  &.desh-atom {
+    background: $desh;
+    background: $desh;
+    background: -moz-linear-gradient(top, $desh 0%, $desh-light 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, $desh), color-stop(100%, rgba(201,249,255,1)));
+    background: -webkit-linear-gradient(top, $desh 0%, $desh-light 100%);
+    background: -o-linear-gradient(top, $desh 0%, $desh-light 100%);
+    background: -ms-linear-gradient(top, $desh 0%, $desh-light 100%);
+    background: linear-gradient(to bottom, $desh 0%, $desh-light 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=  '#73b7ff', endColorstr='#c9f9ff', GradientType=0 );
+  }
+  ion-content {
+    ion-list {
+      .list-inset {
+        margin: 0 20px;
+        border-radius: 34px;
+        background: rgba(255, 255, 255, 0.4);
+      }
+      label {
+        padding: 0 10px !important;
+      }
+      .item {
+        background-color: transparent;
+        border-color: transparent;
+        input {
+          height: 25px;
+          text-align: center;
+          color: white;
+          font-weight: bold;
+        }
+        input[type="text"]::-webkit-input-placeholder {
+          color: rgba(255, 255, 255, 0.67);
+          font-weight: normal;
+        }
+        .icon {
+          color: white;
+        }
+      }
+      .item-icon-left {
+        .icon {
+          font-size: 20px;
+          box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;
+        }
+        .item-content {
+          padding-left: 50px !important;
+        }
+        .badge {
+          top: 8px;
+          background-color: $desh-dark;
+          color: #fff;
+        }
+      }
+      ion-item {
+        .item-content {
+          &.activated {
+            background: $desh !important;
+          }
+          color: white;
+          padding: 8px 16px !important;
+          background-color: transparent !important;
+        }
+      }
+    }
+  }
+}
+.desh-atom {
+  ion-header-bar {
+    border-color: transparent !important;
+    background: $desh !important;
+  }
+}
+/* ------------- Profile page - profile.html -------------------------------- */
+.profile {
+  background: linear-gradient(to bottom, rgb(1, 1, 1) -1%, rgba(255, 255, 255, 0.19) 35%);
+  .item-input {
+    background: rgba(0, 0, 0, 0.55);
+    border: transparent;
+  }
+  .input-label {
+    color: white;
+  }
+  .button {
+    background: transparent;
+    color: white;
+  }
+  input {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .textarea {
+    span {
+      display: none;
+    }
+    textarea {
+      font-size: 14px;
+      text-align: justify;
+      color: white;
+      font-weight: bold;
+      text-decoration: blink;
+      letter-spacing: 0;
+      line-height: inherit;
+      margin: 0 -1px 0 0;
+      height: 154px;
+      width: 642px;
+      background: transparent;
+      padding-right: 12px;
+      width: 100%;
+    }
+  }
+}
+.desh-atom-profile-content {
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  &.desh-atom-round {
+    img {
+      border-radius: 100px;
+    }
+  }
+  &.desh-atom-md {
+    width: 160px;
+    img {
+      width: 160px;
+      height: 160px;
+    }
+  }
+  &.desh-atom-sm {
+    width: 128px;
+    img {
+      width: 128px;
+      height: 128px;
+    }
+  }
+  &.desh-atom-lg {
+    width: 220px;
+    img {
+      width: 220px;
+      height: 220px;
+    }
+  }
+}
+/* ------------- Message - message.html ------------------------------------- */
+.margin-bottom {
+  margin-bottom: 200px;
+}
+.message-footer {
+  .item-input {
+    width: 100%;
+  }
+  .message-footer-left {
+    border-radius: 10px 0 0 10px;
+  }
+}
+/* ------------- Side menu with avatar -------------------------------------- */
+.menu-avatar {
+  .item-content {
+    padding: 30px !important;
+  }
+  img {
+    border-radius: 100px;
+  }
+  span {
+    float: left;
+    padding-top: 20px;
+    padding-left: 10px;
+    display: inherit;
+  }
+  p {
+    color: rgba(255, 255, 255, 0.67);
+    float: left;
+    padding-left: 10px;
+    display: inherit;
+  }
+}
+/* ------------- Posts - home.html -------------------------------------- */
+.post {
+    text-align: justify;
+  .post-header {
+    font-size: 12px;
+  }
+  .author {
+    color: $desh;
+  }
+  .post-title {
+    font-size: 14px;
+  }
+  .time {
+    font-size: 10px;
+    color: gray;
+  }
+  .post-main {
+    width: 100%;
+  }
+  .post-description {
+    padding: 10px 10px 0;
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+  .item-thumbnail-left {
+    padding-left: 70px;
+    min-height: 68px;
+  }
+  .post-footer {
+    background: #f7f8fa;
+    padding: 6px;
+    margin-bottom: 0;
+    .icon {
+      font-size: 16px;
+    }
+    .bookmark {
+      float: right;
+      padding-right: 10px;
+      .icon {
+        font-size: 22px;
+        animation-name: rotateIn;
+
+        &.marked {
+          color: red;
+          animation-name: rotateIn;
+        }
+      }
+    }
+    .badge {
+      color: black;
+    }
+    .subdued {
+      color: black;
+      &.liked {
+        color: $desh;
+
+        .badge {
+          color: $desh;
+          animation-name: rotateIn;
+
+        }
+      }
+    }
+  }
+}
+/* -------- comments --------- */
+.comments{
+  background: red !important;
+            text-align: justify;
+  ion-item{
+        padding-bottom: 0;
+    padding-left: 65px;
+    .commentedBy{
+      color: $desh;
+      font-size:16px;
+    }
+    .avatar{
+      border-radius:0;
+      margin-right:0;
+    }
+    .liked{
+      color: $desh;
+      animation-name: rotateIn;
+    }
+    .time{
+          font-weight: 600;
+      float: right;
+      position: absolute;
+      top:0;
+      right: 0;
+      padding:8px;
+    font-size:12px;
+    }
+    .replyCount{
+
+      right: 0;
+      margin-right: 0;
+      text-align: right;;
+    //   padding:8px;
+     font-size:12px;
+     .like{
+       margin-right:18px;
+     }
+     .icon{
+       font-size:14px;
+     }
+    }
+    .subComments{
+      .list{
+        margin-left: -65px;
+        margin-right: -16px;
+        background: #d3d3d3;
+        ion-item{
+              padding-bottom: 4px;
+          margin-left: 20px;
+          font-size: 12px;
+
+          .commentedBy{
+            font-size:12px;
+          }
+          p{
+            font-size:12px;
+          }
+        }
+
+      }
+    }
+  }
+}
+.comment-footer{
+  background:lightgrey;
+  .item-input{
+    border: 0;
+    border-radius: 11px
+  }
+}
+.post-content{
+  .list{
+    margin-bottom: 0px;
+
+  }
+  background:#fafafa; padding-top:0; margin-top:0;
+  .post{
+
+    .card{
+      margin-top:0;
+      margin-top: 0;
+margin-bottom: 0;
+    }
+    .post-footer{
+      background: transparent;
+border-bottom: 1px #f5f5f5 solid
+    }
+  }
+}
+/* ----------- bookmark ------------- */
+.bookmark{
+  .item{
+    padding-bottom: 0;
+  }
+}
+
+/* ---------- facebook -------------- */
+.fb-small-avatar{
+  float:right;
+  padding-top:23px
+}
+.fb-date-note{
+  color:black;
+  font-size:10px !important;
+  position:absolute;
+  top:16px;
+  right:8px
+}
+.fb-list{
+  .item-content{
+    padding-right: 16px;
+  }
+}

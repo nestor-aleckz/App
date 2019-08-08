@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,ModalController } from 'ionic-angular';
 import { ProvVacunaProvider } from '../../providers/prov-vacuna/prov-vacuna';
-import { Vacuna,VacunaxInfante } from '../../models/interfaces/ifVacuna';
+import { Vacuna } from '../../models/interfaces/ifVacuna';
 import {AlimentacionPage} from '../alimentacion/alimentacion';
 
 
@@ -14,8 +14,7 @@ export class VacunasPage {
   vacunas: Vacuna[];
   strTitulo: String;
   infante :{edad:number,nombre:string,key:string} = {edad: 0,nombre: '',key:''};
-  lstvacxIn: VacunaxInfante[]=[];
-   intMesV;
+  intMesV;
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public modalCtrl: ModalController,
@@ -41,7 +40,7 @@ export class VacunasPage {
          );
           profileModal.onDidDismiss (() => {
             this.vacunas = this.svProvVac.crearVacunas(this.intMesV,this.infante.key);
-          }); 
+          });
          profileModal.present();
     });
   }

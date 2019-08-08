@@ -5,14 +5,12 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar no-border-bottom color="primary">
+  <ion-navbar  color="primary">
     <ion-row>
       <ion-col col-6>
-        <ion-title>
-          Informacion
-        </ion-title>
+          <ion-title > Informacion</ion-title>
       </ion-col>
-      <ion-col col-6>
+      <ion-col col-4>
         <ion-item>
           <ion-select  class ="seleccion"  placeholder='Seleccione Niño'  #C (ionChange)="slctNino(C.value)">
             <ion-option *ngFor="let item of infantes" [value]=item>
@@ -23,9 +21,9 @@
       </ion-col>
     </ion-row>
   </ion-navbar>
-  <ion-toolbar no-border-top>
+  <ion-toolbar no-border-top >
       <ion-segment [(ngModel)]="Informacion">
-        <ion-segment-button text-wrap value="Vacunas">
+        <ion-segment-button text-wrap value="Vacunas" (click)="initVac()">
           Vacunas
         </ion-segment-button>
         <ion-segment-button text-wrap value="Alimentacion">
@@ -46,30 +44,43 @@
 
   <div [ngSwitch]="Informacion">
     <ion-list  class="card-background-page" *ngSwitchCase="'Vacunas'">
-      <ion-range  min="1" max="8" step="1" color="secondary" [(ngModel)]="edadVacuna">
-      </ion-range>
-      <ion-list *ngFor="let itmFV of fechasV ">
-        <ion-card [hidden]="verInfo(itmFV.idFecha,1)">
-            <ion-card-content (click)="verVacuna(itmFV.idFecha)">
-                <ion-grid>
-                  <ion-row>
-                    <ion-col col-4>
-                      <ion-row class="logo-row">
-                        <ion-col width-100>
-                        <img  src={{itmFV.strimg}}/>
-                        </ion-col>
-                      </ion-row>
-                    </ion-col>
-                    <ion-col col-8>
-                      <div class="card-title" > {{itmFV.titulo}} </div>
-                    </ion-col>
-                  </ion-row>
-                </ion-grid>
-            </ion-card-content>
-        </ion-card>
-      </ion-list>
-    </ion-list>
+      <ion-item >
+        <ion-scroll scrollX="true" scroll-avatar>
+          <div *ngFor="let itmFV of fechasV" class="scroll-item">
+            <ion-avatar *ngIf="itmFV.idFecha >= 2">
+                <img  src={{itmFV.strimg}}  alt="edad"  (click)="verVacuna(itmFV.idFecha)"/>
+                <p  class="item-note"> {{itmFV.titulo}}</p>
+              </ion-avatar>
+          </div>
+        </ion-scroll>
+        </ion-item>
+        <br><br>
 
+        <ion-list  class="text-to-change"*ngFor="let vacuna of vacunas">
+              <ion-row>
+                <ion-col col-2>
+                  <div (click)="showVacuna(vacuna)">
+                    <div *ngIf="vacuna.vacunado==true">
+                       <img src="../assets/imgs/check.png">
+                    </div>
+                    <div *ngIf="vacuna.vacunado==false">
+                       <img src="../assets/imgs/nochek.svg">
+                    </div>
+                  </div>
+                </ion-col>
+                <ion-col col-1>
+                </ion-col>
+                <ion-col col-9>
+                  <h4>{{vacuna.nombre}}</h4>
+                  <div class="clstxtVacuna">
+                    <p>{{vacuna.descripcion}}</p>
+                  </div>
+                </ion-col>
+              </ion-row>
+
+        </ion-list>
+
+    </ion-list>
     <ion-list class="popover-page" *ngSwitchCase="'Alimentacion'">
       <ion-range  min="0" max="3" step="1" color="secondary" [(ngModel)]="edadAlimento">
       </ion-range>

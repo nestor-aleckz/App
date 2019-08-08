@@ -6,15 +6,17 @@
 -->
 
 
-<ion-content padding class="main-view">
+<ion-content class="main-view">
   <div class="overlay" (click)="dismiss()"></div>
    <div class="modal_content">
      <div *ngIf="VacInfante.vacunado==true">
        <ion-row>
           <ion-col col-8>
-            <h3> A {{infante.nombre}} ya se le aplicó la vacuna {{vacuna}} </h3>
+            <h3> <br> {{VacInfante.fechaVacuna}} </h3>
             <p>
-                Lo realizó el {{VacInfante.fechaVacuna}}
+                <br>
+                A {{infante.nombre}} ya se le aplicó la vacuna {{vacuna}}
+
             </p>
           </ion-col>
           <ion-col col-3>
@@ -29,7 +31,7 @@
 
      </div>
      <div *ngIf="VacInfante.vacunado==false">
-       <h2> ¿Cuando Vacuno a {{infante.nombre}} ?</h2>
+       <h2> <br> ¿Cuando Vacuno a {{infante.nombre}} ?</h2>
        <ion-row>
            <ion-item>
              <ion-datetime  placeholder="Fecha" [(ngModel)]="VacInfante.fechaVacuna"></ion-datetime>

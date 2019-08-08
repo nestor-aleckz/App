@@ -1,30 +1,72 @@
 page-info {
+
+  .text-to-change div {
+    margin: 10px auto;
+  }
+
+  .clstxtVacuna {
+    text-align: left!important;
+    font-size: 11px;
+  }
+
+  .no-side-borders {
+    border-left: transparent;
+    border-right: transparent;
+  }
+  .desh-atom-card-2 {
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;
+  }
+  .avatar {
+    border-radius: 100%;
+  }
+  .margin {
+    margin: 20px;
+
+  }
+  .fit-to-screen {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+
+  .scroll-content{
+    padding: 0px!important;
+  }
+
+  ion-scroll[scrollX] {
+      white-space: nowrap;
+      height: 120px;
+      overflow: hidden;
+
+      .scroll-item {
+        display: inline-block;
+      }
+
+      .selectable-icon{
+        margin: 10px 20px 10px 20px;
+        color: red;
+        font-size: 100px;
+      }
+
+
+      ion-avatar img{
+        margin: 10px;
+      }
+    }
+
+    ion-scroll[scroll-avatar]{
+      height: 80px;
+    }
+
+    /* Hide ion-content scrollbar */
+    ::-webkit-scrollbar{
+      display:none;
+    }
+
+  .scroll-zoom-wrapper {
+        white-space: nowrap;
+    }
   .seleccion{
     max-width: 100%!important;
-  }
-  
-  .tooltip {
-    position: relative;
-    border-bottom: 1px dotted black;
-    width: 100%;
-}
-
-.tooltip .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-
-    /* Position the tooltip */
-    position: absolute;
-    z-index: 1;
-}
-
-  .tooltip:hover .tooltiptext {
-      visibility: visible;
   }
 
   .logo-row {
@@ -42,13 +84,18 @@ page-info {
     margin-top: 30px;
   }
   ul li {
+    margin: 10px 0px;
     text-align: left;
     list-style: disc;
-    margin: 10px 0px;
   }
 
   ion-segment-button{
     font-size: 11px;
+  }
+
+  .item-note{
+    font-size: 8px;
+    text-align: center;
   }
 
   .card-background-page {

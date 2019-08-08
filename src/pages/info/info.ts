@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams ,ModalController, PopoverController} from 'ionic-angular';
+
 import {VacunasPage} from '../vacunas/vacunas'
+import { Vacuna } from '../../models/interfaces/ifVacuna';
 import {AlimentacionPage} from '../alimentacion/alimentacion'
 import { ProvInfanteProvider } from '../../providers/prov-infante/prov-infante'
 import { ProvVacunaProvider } from '../../providers/prov-vacuna/prov-vacuna'
@@ -18,6 +20,7 @@ import * as moment from 'moment';
   templateUrl: 'info.html',
 })
 export class InfoPage {
+   vacunas: Vacuna[];
    infantes: Infantes[] = [];
    fechasV: FechaVacuna[];
    edadAlimts: Alimento[];
@@ -28,6 +31,7 @@ export class InfoPage {
    etapaC = 0;
    etapaS = 0;
    infante :{edad:number,nombre:string,key:string} = {edad: -1,nombre: '',key:''};
+   intMesV;
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public modalCtrl: ModalController,
@@ -156,9 +160,33 @@ export class InfoPage {
     }
   }
 
-
+/*vacunas INICIO*/
+initVac(){
+  this.vacunas = [];
+}
   verVacuna(inttipo:Number){
-    this.navCtrl.push(VacunasPage,{mes: inttipo,infante:this.infante});
+    this.intMesV = inttipo;
+    this.vacunas = this.svProvVac.crearVacunas(inttipo,this.infante.key);
   }
 
+  showVacuna(vacuna:Vacuna){
+    this.svProvVac.getVacunaInfante(this.infante.key,vacuna).then((res:any)=>{
+        var  vacI = res.vacInfante;
+         let profileModal = this.modalCtrl.create(
+           AlimentacionPage,
+           {
+            vacuna:vacuna.nombre,
+            vacInf: vacI,
+            infante:this.infante
+           }
+         );
+          profileModal.onDidDismiss (() => {
+            this.vacunas = this.svProvVac.crearVacunas(this.intMesV,this.infante.key);
+          });
+         profileModal.present();
+    });
+  }
+
+
+/*vacunas FIN*/
 }

@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title > Monitoreo de  {{Infante.Nombres + " " + Infante.Apellidos}}</ion-title>
+    <ion-title > Monitoreo de  {{Infante.Nombres}}</ion-title>
   </ion-navbar>
   <ion-toolbar no-border-top>
       <ion-segment [(ngModel)]="Monitoreo">
@@ -63,8 +63,8 @@
           </ion-col>
         </ion-row>
       </ion-list>
-      <ion-fab right edge middle>
-        <button ion-fab color="blue" (click)="openModal(itemKey,Infante.FechaNac)">
+      <ion-fab right edge end>
+        <button ion-fab color="secondary" (click)="openModal(itemKey,Infante.FechaNac)">
           <ion-icon name='md-add'></ion-icon>
         </button>
       </ion-fab>

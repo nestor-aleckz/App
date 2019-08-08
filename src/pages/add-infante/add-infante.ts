@@ -34,4 +34,8 @@ export class AddInfantePage {
       });
   }
 
+  closeModal() {
+        this.navCtrl.pop();
+    }
+
 }

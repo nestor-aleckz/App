@@ -1,0 +1,66 @@
+.auth {
+  height: 100%;
+  padding-top: 80%;
+  padding-left: 10%;
+  padding-right: 10%;
+  .container {
+    margin:auto;
+    max-width: 400px;
+    padding: 10px;
+    background: rgba(249, 249, 249, 0.73);
+    box-shadow: 1px 5px 15px 1px rgba(0,0,0,0.75);
+    .list {
+      margin-left: 5px;
+      margin-right: 5px;
+      background: rgba(255, 255, 255, 0.3);
+      .item {
+        background: transparent;
+        padding-left: 0;
+        input {
+          font-weight: bold;
+          text-align: center;
+          padding: 0;
+        }
+      }
+    }
+    .fb {
+      background: rgba(59, 89, 152, 0.76);
+    }
+    .login {
+      margin: 0;
+      padding: 0;
+      bottom: 5px;
+      background: rgba(239, 78, 58, 0.76);
+    }
+  }
+}
+.top-btn {
+  margin: 20px;
+  float: right;
+  font-weight: bold;
+  color: white;
+  background: rgba(255, 255, 255, 0.3);
+  .symbol {
+    font-size: 18px;
+    font-family: monospace;
+  }
+}
+.auth-bg {
+  background-color: white;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  &.background-login {
+    background-image: url("../img/images/background-login.jpg");
+  }
+  &.background-reg {
+    background-image: url("../img/images/background-reg.jpg");
+    .top-btn{
+      background: gray;
+    }
+  }
+}

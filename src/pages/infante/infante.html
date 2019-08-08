@@ -6,14 +6,12 @@
 
 </ion-header>
 
-
 <ion-content padding>
-  <ion-list *ngFor="let item of items | async">
-      <ion-item >
-        <ion-card >
+  <ion-list class="list-inset" *ngFor="let item of items | async">
+        <ion-card class="desh-atom-card-24">
           <ion-row>
             <ion-col col-9>
-              <ion-card-content (click)="monitoreo(item.key)" class="popover-page">
+              <ion-card-content (click)="monitoreo(item.key)" >
                 <ion-item class="text-to-change">
                   <ion-avatar item-start>
                     <div *ngIf="item.Genero=='M'">
@@ -49,13 +47,11 @@
             </ion-col>
           </ion-row>
         </ion-card>
-        </ion-item>
   </ion-list>
 
-  <ion-fab right edge middle>
-  <button ion-fab color="blue" (click)="openModal()">
-    <ion-icon name='md-add'></ion-icon>
-  </button>
-
-</ion-fab>
+  <ion-fab right  bottom >
+    <button  ion-fab color="secondary" (click)="openModal()">
+      <ion-icon name='md-add'></ion-icon>
+    </button>
+  </ion-fab>
 </ion-content>

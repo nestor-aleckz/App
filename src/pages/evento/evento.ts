@@ -39,5 +39,8 @@ export class EventoPage {
       }
     });
   }
+  closeModal() {
+        this.navCtrl.pop();
+    }
 
 }

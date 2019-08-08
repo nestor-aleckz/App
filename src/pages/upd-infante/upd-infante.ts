@@ -33,4 +33,8 @@ export class UpdInfantePage {
     });
   }
 
+  closeModal() {
+        this.navCtrl.pop();
+    }
+
 }

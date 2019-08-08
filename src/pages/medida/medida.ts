@@ -199,7 +199,7 @@ export class MedidaPage {
   }
 
   getDataWithOms(inicio :number,fin :number,strtipoG:string){
-    var cont=0;
+    var cont=inicio;
     var dtGraf=[];
     for(var i=inicio;i<fin;i++){
       if(strtipoG=='Peso'){
