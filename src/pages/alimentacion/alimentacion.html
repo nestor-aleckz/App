@@ -11,21 +11,31 @@
    <div class="modal_content">
      <div *ngIf="VacInfante.vacunado==true">
        <ion-row>
-          <ion-col col-8>
-            <h3> <br> {{VacInfante.fechaVacuna}} </h3>
-            <p>
-                <br>
-                A {{infante.nombre}} ya se le aplicó la vacuna {{vacuna}}
+          <ion-col col-12>
+            <ion-row>
+              <ion-col col-8>
+                <h3 style="text-align:center;"> <br> {{VacInfante.fechaVacuna}} </h3>
+              </ion-col>
+              <ion-col col-3>
+                <button ion-button icon-start clear small (click)="delete()">
+                  <ion-icon name="ios-trash"></ion-icon>
+                  <div>Eliminar</div>
+                </button>
+              </ion-col>
+            </ion-row>
 
-            </p>
-          </ion-col>
-          <ion-col col-3>
-            <button ion-button icon-start clear small (click)="delete()">
-              <ion-icon name="ios-trash"></ion-icon>
-              <div>Borrar</div>
-            </button>
-          </ion-col>
-          <ion-col col-1>
+            <ion-row>
+              <ion-col col-2>
+                <img src="../assets/imgs/vacuna.svg">
+              </ion-col>
+              <ion-col col-9>
+                <p>
+                    <br>
+                    A {{infante.nombre}} ya se le aplicó la vacuna {{vacuna}}
+                </p>
+              </ion-col>
+            </ion-row>
+
           </ion-col>
        </ion-row>
 

@@ -40,6 +40,8 @@ export class CalendarPage {
 
       lastSelect: number = 0; // 记录上次点击的位置
 
+      fechasE : Evento[];//todos los eventos del usuario logueado
+      eventMes : Evento[];//los eventos correspondientes al mes
       // weekHead: string[] = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
       weekHead: string[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
@@ -49,6 +51,7 @@ export class CalendarPage {
           this.currentMonth = moment().month();
           this.currentDate = moment().date();
           this.currentDay = moment().day();
+
       }
 
       verMes(intMes:number){
@@ -106,8 +109,29 @@ export class CalendarPage {
         return strMes;
       }
 
+      eventosxMes(month, year){
+        this.eventMes = [];
+        for (var ev of this.fechasE) {
+           var fecha = ev.fecha.split("-");
+           if((month+1) == fecha[1] && year == fecha[2] ){
+             var objFecha = {
+                 fecha: ev.fecha,
+                 descripcion : ev.descripcion,
+                 evento : ev.evento
+               } as Evento;
+               this.eventMes.push(objFecha);
+           }
+        }
+      }
+
       ngOnInit() {
-          this.today()
+
+        this.svEvento.getAllEvents().then((res:any)=>{
+          this.fechasE = [];
+          this.fechasE = res.objeve as Evento[];
+          this.today();
+        });
+
       }
 
       today() {
@@ -127,7 +151,9 @@ export class CalendarPage {
           this.onDaySelect.emit(this.dateArray[todayIndex]);
       }
 
+
       createMonth(year: number, month: number) {
+          this.eventosxMes(month,year);
           this.dateArray = [];
           this.weekArray = [];
           let firstDay;
@@ -148,7 +174,7 @@ export class CalendarPage {
               for (let i = 0; i < firstDay; i++) {
                   if (month === 0) {
                     var dia = lastMonthStart + i;
-                    var esevento = this.esevento(dia+"-"+"12"+"-"+year);
+                    var esevento = this.esevento(dia);
                       var fecha = {
                           year: year,
                           month: 11,
@@ -162,7 +188,7 @@ export class CalendarPage {
                   } else {
                     var mes =month -1+1;
                     var dia = lastMonthStart + i;
-                    var esevento = this.esevento(dia+"-"+mes+"-"+year);
+                    var esevento = this.esevento(dia);
                     var fecha ={
                         year: year,
                         month: month - 1,
@@ -181,7 +207,7 @@ export class CalendarPage {
           for (let i = 0; i < monthDays; i++) {
             var mes =month+1;
             var dia = i + 1;
-            var esevento = this.esevento(dia+"-"+mes+"-"+year);
+            var esevento = this.esevento(dia);
             var fecha = {
                 year: year,
                 month: month,
@@ -209,7 +235,7 @@ export class CalendarPage {
                   if (month === 11) {
                     var mes =1;
                     var dia = i + 1;
-                    var esevento = this.esevento(dia+"-"+mes+"-"+year);
+                    var esevento = this.esevento(dia);
                     var fecha = {
                         year: year,
                         month: 0,
@@ -223,7 +249,7 @@ export class CalendarPage {
                   } else {
                     var mes =month+1+1;
                     var dia = i + 1;
-                    var esevento = this.esevento(dia+"-"+mes+"-"+year);
+                    var esevento = this.esevento(dia);
                     var fecha ={
                         year: year,
                         month: month + 1,
@@ -269,16 +295,15 @@ export class CalendarPage {
           this.createMonth(this.displayYear, this.displayMonth);
       }
 
-      esevento(strkey:string){
-        var isevent:boolean;
-        this.svEvento.getEvento(strkey).then((res:any)=>{
-          var event = res.objeve as Evento;
-          if(event.evento!=''){
-           isevent = true;
-         }else{
-           isevent = false;
-         }
-        });
+      esevento(dia){
+        var isevent:boolean = false;
+        for (var ev of this.eventMes) {
+          var fecha = ev.fecha.split("-");
+           if(fecha[0] == dia  ){
+              isevent = true;
+              break;
+           }
+        }
         return isevent;
       }
 
@@ -295,6 +320,14 @@ export class CalendarPage {
                day.isEvent = true;
             }
             let profileModal = this.modalCtrl.create(EventoPage,{esEvento:day.isEvent,objEve:event});
+            profileModal.onDidDismiss(()=>{
+              this.svEvento.getAllEvents().then((res:any)=>{
+                this.fechasE = [];
+                this.fechasE = res.objeve as Evento[];
+                this.createMonth(this.displayYear, this.displayMonth);
+              });
+
+            });
             profileModal.present();
           });
       }

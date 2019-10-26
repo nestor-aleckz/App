@@ -32,6 +32,7 @@ export class InfoPage {
    etapaS = 0;
    infante :{edad:number,nombre:string,key:string} = {edad: -1,nombre: '',key:''};
    intMesV;
+   Informacion;
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public modalCtrl: ModalController,
@@ -46,6 +47,7 @@ export class InfoPage {
     this.edadAlimts = svProvAlim.getFechas();
     this.lstDesarrollo = svProvDesa.getEtapas();
     this.lstEstimulo = svProvEstimu.getEtapas();
+    this.Informacion = "Vacunas";
   }
 
   ionViewDidLoad() {

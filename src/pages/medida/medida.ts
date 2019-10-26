@@ -29,7 +29,7 @@ export class MedidaPage {
   colorG: String;
   strKeyIn : string;
   strFechaN : string;
-
+  Monitoreo;
   constructor(public svMedida: ProvMedidaProvider,
               public navCtrl: NavController,
               public navParams: NavParams,
@@ -38,6 +38,7 @@ export class MedidaPage {
     this.itemKey = navParams.get('keyI');
     this.Infante = navParams.get('objInf');
     this.svMedida.lstMedidas(this.itemKey);
+    this.Monitoreo = "Medidas";
   }
 
   ionViewDidLoad() {

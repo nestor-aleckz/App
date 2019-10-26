@@ -29,5 +29,24 @@
         {{day.date}}
       </ion-col>
     </ion-row>
+    <ion-row>
+      <ion-col>
+          <ion-card class="cardEvento">
+            <ion-card-content>
+              <ion-list   *ngFor="let ev of eventMes" >
+                <ion-item>
+                  <ion-row style="border-bottom: 1px solid grey;">
+                    <ion-col>
+                        <h3>{{ev.fecha}}</h3> <p>{{ev.evento}}</p>
+                    </ion-col>
+                  </ion-row>
+                </ion-item>
+              </ion-list>
+            </ion-card-content>
+          </ion-card>
+
+      </ion-col>
+    </ion-row>
   </ion-grid>
+
 </ion-content>

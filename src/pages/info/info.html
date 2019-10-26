@@ -57,27 +57,32 @@
         <br><br>
 
         <ion-list  class="text-to-change"*ngFor="let vacuna of vacunas">
-              <ion-row>
-                <ion-col col-2>
-                  <div (click)="showVacuna(vacuna)">
-                    <div *ngIf="vacuna.vacunado==true">
-                       <img src="../assets/imgs/check.png">
+            <ion-row style="border-bottom: 1px solid grey!important;">
+              <ion-col>
+                <ion-row>
+                  <ion-col>
+                    <h4 style="text-align:left;">{{vacuna.nombre}}</h4>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col col-2>
+                    <div (click)="showVacuna(vacuna)">
+                      <div *ngIf="vacuna.vacunado==true">
+                         <img width="50%" src="../assets/imgs/check.svg">
+                      </div>
+                      <div *ngIf="vacuna.vacunado==false">
+                         <img width="50%" src="../assets/imgs/nochek.svg">
+                      </div>
                     </div>
-                    <div *ngIf="vacuna.vacunado==false">
-                       <img src="../assets/imgs/nochek.svg">
+                  </ion-col>
+                  <ion-col col-10>
+                    <div class="clstxtVacuna">
+                      <p>{{vacuna.descripcion}}</p>
                     </div>
-                  </div>
-                </ion-col>
-                <ion-col col-1>
-                </ion-col>
-                <ion-col col-9>
-                  <h4>{{vacuna.nombre}}</h4>
-                  <div class="clstxtVacuna">
-                    <p>{{vacuna.descripcion}}</p>
-                  </div>
-                </ion-col>
-              </ion-row>
-
+                  </ion-col>
+                </ion-row>
+              </ion-col>
+            </ion-row>
         </ion-list>
 
     </ion-list>
@@ -119,18 +124,23 @@
               </ion-col>
             </ion-row>
               <ion-card-content>
-                 <ion-card-title>
+                 <ion-card-title style="text-align:center;">
                    {{etapaD.edad}}
                  </ion-card-title>
                  <ion-row no-padding>
-                   <ion-list>
-                     <ul *ngFor="let desDesa of etapaD.lstDescripcion">
-                        <li text-wrap>
-                          <p>
-                                {{desDesa}}
-                            </p>
-                        </li>
-                    </ul>
+                   <ion-list *ngFor="let desDesa of etapaD.lstDescripcion">
+                        <ion-item  text-wrap>
+                          <ion-row style="border-bottom: 1px solid grey!important; text-align:left;">
+                            <ion-col col-2>
+                              <img width="50%" src="../assets/imgs/baby1.svg" />
+                            </ion-col>
+                            <ion-col col-10>
+                              <p>
+                                 {{desDesa}}
+                              </p>
+                            </ion-col>
+                          </ion-row>
+                        </ion-item>
                    </ion-list>
                 </ion-row>
              </ion-card-content>
@@ -149,19 +159,23 @@
               </ion-col>
             </ion-row>
             <ion-card-content>
-               <ion-card-title>
+               <ion-card-title style="text-align:center;">
                  {{etapaE.edad}}
                </ion-card-title>
                <ion-row no-padding>
-                 <ion-list>
-
-                   <ul *ngFor="let desEst of etapaE.lstDescripcion">
-                      <li text-wrap>
-                          <p>
-                              {{desEst}}
-                          </p>
-                      </li>
-                  </ul>
+                 <ion-list *ngFor="let desEst of etapaE.lstDescripcion">
+                      <ion-item  text-wrap>
+                        <ion-row style="border-bottom: 1px solid grey!important;text-align:left;">
+                          <ion-col col-2>
+                            <img width="50%" src="../assets/imgs/baby.svg" />
+                          </ion-col>
+                          <ion-col col-10>
+                            <p>
+                               {{desEst}}
+                            </p>
+                          </ion-col>
+                        </ion-row>
+                      </ion-item>
                  </ion-list>
               </ion-row>
            </ion-card-content>
