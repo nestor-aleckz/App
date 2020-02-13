@@ -21,22 +21,24 @@ export class ProvEventoProvider {
   getAllEvents(){
     var promise = new Promise((resolve, reject) =>{
           this.afaut.authState.subscribe(auth=>{
-           var path = `Evento/${auth.uid}/`;
-           this.itemsRef =this.database.list(path);
-           this.itemsRef.snapshotChanges().subscribe(
-             actions => {
-               this.fechasE = [];
-               actions.forEach(
-                 action=>{
-                   var fcha =  {} as Evento;
-                   fcha.fecha= action.payload.val().fecha;
-                   fcha.descripcion = action.payload.val().descripcion;
-                   fcha.evento = action.payload.val().evento;
-                   this.fechasE.push(fcha);
-                   fcha = null;
-                 });
-                 resolve({ objeve: this.fechasE });
-             })
+            if(auth){
+              var path = `Evento/${auth.uid}/`;
+              this.itemsRef =this.database.list(path);
+              this.itemsRef.snapshotChanges().subscribe(
+                actions => {
+                  this.fechasE = [];
+                  actions.forEach(
+                    action=>{
+                      var fcha =  {} as Evento;
+                      fcha.fecha= action.payload.val().fecha;
+                      fcha.descripcion = action.payload.val().descripcion;
+                      fcha.evento = action.payload.val().evento;
+                      this.fechasE.push(fcha);
+                      fcha = null;
+                    });
+                    resolve({ objeve: this.fechasE });
+                })
+            }
            });
         });
         return promise;
@@ -47,7 +49,8 @@ export class ProvEventoProvider {
    var eve = {} as Evento;
    var promise = new Promise((resolve, reject) =>{
      this.afaut.authState.subscribe(auth=>{
-      var path = `Evento/${auth.uid}/${strKeyI}`;
+        if(auth){
+          var path = `Evento/${auth.uid}/${strKeyI}`;
       this.itemRef =this.database.object(path);
       this.itemRef.snapshotChanges().subscribe(
         action => {
@@ -62,6 +65,7 @@ export class ProvEventoProvider {
          }
          resolve({ objeve: eve });
         });
+        }
       });
    });
    return promise;
@@ -70,10 +74,13 @@ export class ProvEventoProvider {
   addEvento(strKeyI:string,objEve : Evento){
      var promise = new Promise((resolve, reject) =>{
        this.afaut.authState.subscribe(auth=>{
-        this.itemsRef =this.database.list(`Evento/${auth.uid}`);
-        this.itemsRef.set(objEve.fecha,objEve).then(()=>{
+         if(auth){
+          
+          this.itemsRef =this.database.list(`Evento/${auth.uid}`);
+          this.itemsRef.set(objEve.fecha,objEve).then(()=>{
             resolve({ success: true });
           });
+         }
        });
     });
     return promise;
@@ -82,11 +89,13 @@ export class ProvEventoProvider {
   deleteEvento(key: string) {
     var promise = new Promise((resolve, reject) =>{
         this.afaut.authState.subscribe(auth=>{
-         this.itemsRef =this.database.list(`Evento/${auth.uid}`);
-         this.itemsRef.remove(key).then(()=>{
-             resolve({ success: true });
-           });
-         });
+          if(auth){
+            this.itemsRef =this.database.list(`Evento/${auth.uid}`);
+            this.itemsRef.remove(key).then(()=>{
+                resolve({ success: true });
+              });
+          }
+        });
      });
      return promise;
  }

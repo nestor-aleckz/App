@@ -19,13 +19,7 @@ export class ProvInfanteProvider {
   items: Observable<any[]>;
   lstInfantes: Infantes[]=[];
   constructor(private database: AngularFireDatabase, private afaut : AngularFireAuth) {
-    this.afaut.authState.subscribe(auth=>{
-      this.itemsRef =this.database.list(`Infantes/${auth.uid}`);
-      // Use snapshotChanges().map() to store the key
-      this.items= this.itemsRef.snapshotChanges().pipe( map(changes =>
-        changes.map(c => ({ key:   c.payload.key, ...c.payload.val() }))
-      ));
-    });
+   
   }
 
     getlstInfantes(){
@@ -47,7 +41,21 @@ export class ProvInfanteProvider {
     }
 
     listInfantes(){
-        return this.items;
+      var promise = new Promise((resolve, reject) =>{
+        this.afaut.authState.subscribe(auth=>{
+          if(auth){
+            this.itemsRef =this.database.list(`Infantes/${auth.uid}`);
+            // Use snapshotChanges().map() to store the key
+            this.items= this.itemsRef.snapshotChanges().pipe( map(changes =>
+              changes.map(c => ({ key:   c.payload.key, ...c.payload.val() }))
+            ));
+            resolve({ data: this.items });
+          }
+        });
+    });
+
+    return promise;
+
     }
 
     getInfante(strkeyInfante : string){

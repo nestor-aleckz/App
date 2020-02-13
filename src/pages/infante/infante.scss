@@ -57,4 +57,9 @@ page-infante {
       border-width: $hairlines-width;
     }
   }
+  .main-button{
+    --box-shadow:none;
+    box-shadow: none!important;
+ }
+
 }

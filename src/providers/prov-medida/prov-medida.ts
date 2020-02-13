@@ -27,18 +27,21 @@ export class ProvMedidaProvider {
 
   lstMedidas(strKeyI:string){
     this.afaut.authState.subscribe(auth=>{
+       if(auth){
         this.itemsRef =this.database.list(`Medida/${auth.uid}/${strKeyI}`,ref=> ref.orderByChild('edad').startAt('0'));
         // Use snapshotChanges().map() to store the key
         this.items = this.itemsRef.snapshotChanges().pipe( map(changes =>
             changes.map(c => ({ key:   c.payload.key, ...c.payload.val() }))
         ));
+       }
       });
     }
 
     getMedida(strKeyI:string, strkeyMedida : string){
       var gtMedida = {} as Medida;
       this.afaut.authState.subscribe(auth=>{
-        var path = `Medida/${auth.uid}/${strKeyI}/${strkeyMedida}`;
+        if(auth){
+          var path = `Medida/${auth.uid}/${strKeyI}/${strkeyMedida}`;
         this.itemRef =this.database.object(path);
         this.itemRef.snapshotChanges().subscribe(
           action => {
@@ -50,6 +53,7 @@ export class ProvMedidaProvider {
             gtMedida.lb =  action.payload.val().lb;
             gtMedida.onz = action.payload.val().onz
           });
+        }
       });
       return gtMedida;
     }

@@ -38,4 +38,15 @@ export class AuthProvider {
     });
     return promise;
   }
+
+  logOut(){
+    var promise = new Promise ((resolve, reject)=>{
+      this.afireauth.auth.signOut().then(()=>{
+        resolve({success:true});
+      }).catch((err)=>{
+        resolve({error:err});
+      })
+    });
+    return promise;
+  }
 }

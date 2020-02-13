@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { App, NavController, NavParams, ModalController } from 'ionic-angular';
 import { Infantes } from '../../models/interfaces/infantes'
 import {AddInfantePage} from '../add-infante/add-infante';
 import {UpdInfantePage} from '../upd-infante/upd-infante';
 import {MedidaPage} from '../medida/medida';
 import { ProvInfanteProvider } from '../../providers/prov-infante/prov-infante';
+import { AuthProvider } from '../../providers/auth/auth'
 import { Observable } from 'rxjs-compat';
 import * as moment from 'moment';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'page-infante',
@@ -19,12 +21,15 @@ export class InfantePage {
   constructor(public svInfante: ProvInfanteProvider,
       public navCtrl: NavController,
       public navParams: NavParams,
-      public modalCtrl: ModalController){
-      svInfante;
+      public modalCtrl: ModalController,
+      private svAuth:AuthProvider,
+      private app:App){
   }
 
   ionViewDidLoad() {
-    this.items = this.svInfante.listInfantes();
+   this.svInfante.listInfantes().then((result:any)=>{
+      this.items = result.data; 
+   });
   }
 
   verEdad(strEdad : string){
@@ -68,6 +73,14 @@ export class InfantePage {
     var Infante = {} as Infantes;
     Infante = this.svInfante.getInfante(prmKeyI);
     this.navCtrl.push(MedidaPage,{keyI: prmKeyI, objInf:Infante });
+  }
+
+  logOut(){
+    this.svAuth.logOut().then((res:any)=>{
+      if(res.success){
+        this.app.getRootNav().setRoot('LoginPage');
+      }
+    });
   }
 
 }

@@ -161,19 +161,21 @@ export class ProvVacunaProvider {
 
    listVacunaxInfante(strKeyInf:string){
      this.afaut.authState.subscribe(auth=>{
-       this.itemsVacIn =this.database.list(`VacunaInfante/${auth.uid}/${strKeyInf}`);
-       this.itemsVacIn.snapshotChanges().subscribe( actions => {
-         actions.forEach(
-           action=>{
-             var vacI =  {} as VacunaxInfante;
-             vacI.dosis = action.payload.val().dosis;
-             vacI.fechaVacuna = action.payload.val().fechaVacuna;
-             vacI.idVacuna = action.payload.val().idVacuna;
-             vacI.vacunado = action.payload.val().vacunado;
-             this.lstvacxIn.push(vacI);
-             vacI = null;
-           });
-       });
+      if(auth){
+        this.itemsVacIn =this.database.list(`VacunaInfante/${auth.uid}/${strKeyInf}`);
+        this.itemsVacIn.snapshotChanges().subscribe( actions => {
+          actions.forEach(
+            action=>{
+              var vacI =  {} as VacunaxInfante;
+              vacI.dosis = action.payload.val().dosis;
+              vacI.fechaVacuna = action.payload.val().fechaVacuna;
+              vacI.idVacuna = action.payload.val().idVacuna;
+              vacI.vacunado = action.payload.val().vacunado;
+              this.lstvacxIn.push(vacI);
+              vacI = null;
+            });
+        });
+      }
    });
  }
 
@@ -181,7 +183,8 @@ export class ProvVacunaProvider {
     var vacI = {} as VacunaxInfante;
     var promise = new Promise((resolve, reject) =>{
       this.afaut.authState.subscribe(auth=>{
-       var path = `VacunaInfante/${auth.uid}/${strKeyI}/${vacuna.idVacuna+"_"+vacuna.dosis}`;
+        if(auth){
+          var path = `VacunaInfante/${auth.uid}/${strKeyI}/${vacuna.idVacuna+"_"+vacuna.dosis}`;
        this.itemVacIn =this.database.object(path);
        this.itemVacIn.snapshotChanges().subscribe(
          action => {
@@ -198,6 +201,7 @@ export class ProvVacunaProvider {
           }
           resolve({ vacInfante: vacI });
          });
+        }
        });
     });
    return promise;
@@ -206,10 +210,12 @@ export class ProvVacunaProvider {
    addVacunaInfante(strKeyI:string,objVacInf : VacunaxInfante){
       var promise = new Promise((resolve, reject) =>{
         this.afaut.authState.subscribe(auth=>{
-         this.itemsVacIn =this.database.list(`VacunaInfante/${auth.uid}/${strKeyI}`);
-         this.itemsVacIn.set(objVacInf.idVacuna+"_"+objVacInf.dosis,objVacInf).then(()=>{
-             resolve({ success: true });
-           });
+         if(auth){
+          this.itemsVacIn =this.database.list(`VacunaInfante/${auth.uid}/${strKeyI}`);
+          this.itemsVacIn.set(objVacInf.idVacuna+"_"+objVacInf.dosis,objVacInf).then(()=>{
+              resolve({ success: true });
+            });
+         }
         });
      });
      return promise;
@@ -218,10 +224,12 @@ export class ProvVacunaProvider {
    deleteVacunaInfante(strKeyI:string,key: string) {
      var promise = new Promise((resolve, reject) =>{
          this.afaut.authState.subscribe(auth=>{
-          this.itemsVacIn =this.database.list(`VacunaInfante/${auth.uid}/${strKeyI}`);
-          this.itemsVacIn.remove(key).then(()=>{
-              resolve({ success: true });
-            });
+            if(auth){
+              this.itemsVacIn =this.database.list(`VacunaInfante/${auth.uid}/${strKeyI}`);
+              this.itemsVacIn.remove(key).then(()=>{
+                  resolve({ success: true });
+                });
+            }
           });
       });
       return promise;
